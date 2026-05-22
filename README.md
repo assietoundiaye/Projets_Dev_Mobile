@@ -15,8 +15,8 @@ Une application simple permettant de calculer l'Indice de Masse Corporelle (IMC)
 Une application de gestion de tâches de type Kanban intuitive et élégante.
 - **Fonctionnalités** : Interface Kanban (À faire, En cours, Terminé), Drag & Drop tactile, persistance locale (LocalStorage), recherche en temps réel.
 - **Technologies** : HTML5, CSS3, JavaScript (ES6+), jQuery Mobile, SortableJS, Cordova.
-- **Lien indivuel**: _https://github.com/assietoundiaye/gestionUtilisateurJEE.git
-_
+- **Lien indivuel**: https://github.com/assietoundiaye/gestionUtilisateurJEE.git
+
 ## 3. Jokko 
 Une application de gestion de contacts (répertoire téléphonique).
 - **Fonctionnalités** : Création, modification, recherche et suppression de contacts. Interface moderne inspirée de Material Design.
