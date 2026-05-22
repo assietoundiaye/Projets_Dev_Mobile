@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SenTasks</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="lib/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<body>
+    <div data-role="page">
+
+        <div class="custom-header">
+            <span class="app-title">SENTASKS</span>
+            <div class="header-actions">
+                <div class="reset-btn" onclick="resetTaches()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                        <path d="M3 3v5h5"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div role="main" class="ui-content">
+
+            <!-- Barre de recherche -->
+            <div class="search-bar">
+                <svg class="search-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="searchField" data-role="none" placeholder="Rechercher une tâche…" oninput="rechercherTache()">
+            </div>
+
+            <!-- Sections -->
+            <div class="lane">
+                <div class="lane-header">
+                    <span class="section-label todo-label">
+                        À faire <span class="count-badge" id="count-todo">0</span>
+                    </span>
+                </div>
+                <div class="cards-strip" id="row-todo"></div>
+            </div>
+
+            <div class="lane">
+                <div class="lane-header">
+                    <span class="section-label doing-label">
+                        En cours <span class="count-badge" id="count-doing">0</span>
+                    </span>
+                </div>
+                <div class="cards-strip" id="row-doing"></div>
+            </div>
+
+            <div class="lane">
+                <div class="lane-header">
+                    <span class="section-label done-label">
+                        Terminé <span class="count-badge" id="count-done">0</span>
+                    </span>
+                </div>
+                <div class="cards-strip" id="row-done"></div>
+            </div>
+
+        </div>
+
+        <!-- Modal saisie -->
+        <div id="modal-overlay" class="modal-overlay" onclick="fermerModal()">
+            <div class="modal-box" onclick="event.stopPropagation()">
+                <p class="modal-title">Nouvelle tâche</p>
+                <span class="modal-subtitle">Que souhaitez-vous accomplir ?</span>
+
+                <input type="text" id="taskField" data-role="none" placeholder="Nom de la tâche...">
+
+                <div class="modal-actions">
+                    <button class="btn-cancel" onclick="fermerModal()" data-role="none">Annuler</button>
+                    <button class="btn-confirm" onclick="validerModal()" data-role="none">Ajouter</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bouton FAB -->
+        <div class="fab-btn" onclick="ouvrirModal()">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+        </div>
+
+        <div class="custom-footer">
+            <span>M2GL • Mai 2026</span>
+        </div>
+
+    </div>
+</body>
+</html>
