@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jokko</title>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+<!-- PAGE LISTE -->
+<div data-role="page" id="page-list">
+    <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1 class="ui-title">Contacts</h1>
+        <div class="ui-btn-right header-icons">
+            <div id="btn-search-toggle">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </div>
+            <div>
+                <a href="#menu-popup" data-rel="popup" data-transition="slideup" style="display: block;">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="main" class="ui-content">
+        <div id="search-container" style="display:none;">
+            <input type="search" id="search-input" placeholder="Rechercher...">
+        </div>
+        <ul id="contact-list" data-role="listview"></ul>
+    </div>
+
+    <!-- Popup Menu -->
+    <div data-role="popup" id="menu-popup" data-theme="a">
+        <ul data-role="listview" data-inset="true" style="min-width:160px;">
+            <li><a href="#" id="btn-delete-all" style="color:#d93025;">Tout supprimer</a></li>
+            <li><a href="#" data-rel="back">Fermer</a></li>
+        </ul>
+    </div>
+
+    <a href="#page-form" id="btn-add-new" class="fab">
+        <svg style="width:28px; height:28px; fill:#fff" viewBox="0 0 24 24">
+            <path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+        </svg>
+    </a>
+</div>
+
+<!-- PAGE FORMULAIRE -->
+<div data-role="page" id="page-form">
+    <div data-role="header" class="form-header" data-position="fixed" data-tap-toggle="false">
+        <a href="#page-list" class="ui-btn-left">
+            <svg style="width:24px; height:24px; fill:#fff" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </a>
+        <h1 id="form-title" class="ui-title">Créer un contact</h1>
+        <button id="btn-save" class="ui-btn-right" style="color:#fff; font-weight:500; font-size: 14px; text-shadow:none;">ENREGISTRER</button>
+    </div>
+
+    <div data-role="main" class="ui-content">
+        <div class="form-avatar-box">
+            <div class="form-avatar-circle">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            </div>
+        </div>
+
+        <div class="input-row">
+            <div class="field-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            </div>
+            <input type="text" id="f-prenom" placeholder="Prénom">
+        </div>
+
+        <div class="input-row">
+            <div class="field-icon"></div>
+            <input type="text" id="f-nom" placeholder="Nom">
+        </div>
+
+        <div class="input-row" style="margin-top: 10px;">
+            <div class="field-icon">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            </div>
+            <input type="tel" id="f-tel" placeholder="Téléphone">
+        </div>
+    </div>
+</div>
+
+<!-- PAGE DÉTAIL -->
+<div data-role="page" id="page-detail">
+    <div data-role="header" data-position="fixed">
+        <a href="#page-list" data-role="button" data-shadow="false" style="background:none; border:none; padding-top:14px;">
+            <svg style="width:24px; height:24px; fill:#fff" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        </a>
+        <h1 class="ui-title">Détail</h1>
+        <button id="btn-edit" class="ui-btn-right" style="background:none; border:none; padding-top:14px;">
+            <svg style="width:24px; height:24px; fill:#fff" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+        </button>
+    </div>
+    <div data-role="main">
+        <div class="detail-hero">
+            <div id="d-avatar" class="detail-avatar-large"></div>
+            <div id="d-nom-complet" style="font-size: 24px; font-weight: 500;"></div>
+        </div>
+
+        <div style="padding: 24px;">
+            <div style="color: var(--text-sub); font-size: 13px; margin-bottom: 4px;">Téléphone mobile</div>
+            <div id="d-tel" style="font-size: 18px; color: var(--text-main); margin-bottom: 30px;"></div>
+
+            <button id="btn-delete" class="ui-btn ui-corner-all" style="background:#fce8e6; color:#d93025; border:none; font-weight:500; text-shadow:none;">Supprimer le contact</button>
+        </div>
+    </div>
+</div>
+
+<script src="cordova.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>
