@@ -1,6 +1,10 @@
 # Projets Dev Mobile
 
 Ce dépôt contient trois applications mobiles hybrides développées avec Cordova.
+# MEMBRES DU GROUPE :
+- Mariama DIOUM
+- Yacine GUEYE
+- Assietou NDIAYE
 
 ## 1. Calcul IMC
 Une application simple permettant de calculer l'Indice de Masse Corporelle (IMC) à partir du poids et de la taille de l'utilisateur.
